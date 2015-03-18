@@ -1226,6 +1226,8 @@ var createRequest = function(request) {
     request.emitter.emit("socket", socket);
   });
 
+  request._raw.xhr.withCredentials = true;
+
   // TCP timeouts should also trigger the "response_error" event.
   request._raw.on('socket', function () {
     request._raw.socket.on('timeout', function () {
